@@ -8,3 +8,14 @@ puts "Welcome to Tic Tac Toe!"
 display_board(board)
 
 # Make sure to execute #play below
+
+def play(board)
+  while !over?(board)
+    turn(board)
+  end
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
+    puts "Cat's Game!"
+  end
+end

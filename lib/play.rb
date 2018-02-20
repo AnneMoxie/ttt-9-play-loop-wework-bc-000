@@ -1,4 +1,5 @@
-# Helper Methods
+board = [" "," "," "," "," "," "," "," "," " ]
+
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
@@ -25,9 +26,9 @@ end
 
 def turn(board)
   puts "Please enter 1-9:"
-  input = gets.strip
-  index = input_to_index(input)
-  if valid_move?(board, index)
+  user_input = gets.strip
+  index = input_to_index(user_input)
+  if valid_move?(board, index, current_player(board))
     move(board, index)
     display_board(board)
   else
@@ -36,3 +37,14 @@ def turn(board)
 end
 
 # Define your play method below
+
+def play(board)
+  while !over?(board)
+    turn(board)
+  end
+  if won?(board)
+    puts "Congratulations! #{winner(board)}"
+  elseif draw?(board)
+    puts "Cat's game!"
+  end
+end
